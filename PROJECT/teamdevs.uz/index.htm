@@ -570,10 +570,10 @@
                 </div>
             
                 <div class="form-group">
-                  <!-- <button type="submit" class="btn btn-transparent btn-form">
+                  <button type="submit" class="btn btn-transparent btn-form">
                     Отправить
-                  </button> -->
-                  <input type="submit" value="Yuborish" id="btn">
+                  </button>
+                  <!-- <input type="submit" value="Yuborish" id="btn"> -->
                 </div>
               
               </div>
@@ -711,105 +711,64 @@
         </div>
       
         <div class="form-group">
-          <button type="submit" class="btn popup-btn">Отправить</button>
+          <button type="submit" class="btn popup-btn">Отправить 666</button>
         </div>
         <div class="popup-note">
           либо напишите на
           <a href="mailto:office@teamdevs.uz">office@teamdevs.uz</a>
         </div>
      
-		
-
-        <input
-          type="hidden"
-          name="af_action"
-          value="d09295926e02abbebe97679d0f79bd4f"
-        />
+	
       </form>
     </div>
 
-    <div class="feedback-form" id="feedback" style="display: none">
-      <form method="post" class="ajax_form" action="" id="feedbackForm">
-        <div class="popup-form__title">Связаться с нами</div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="name"
-            placeholder="Ваше имя*"
-            class="popup-input"
-            required=""
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="phone"
-            placeholder="Ваш номер телефона*"
-            class="popup-input phone"
-            required=""
-          />
-        </div>
-        <div class="form-group">
-          <textarea
-            name="comment"
-            class="popup-textarea"
-            placeholder="Коментарий"
-          ></textarea>
-        </div>
-     
-        <div class="form-group">
-          <button type="submit" class="btn popup-btn">Отправить</button>
-        </div>
-        <div class="popup-note">
-          либо напишите на
-          <a href="mailto:office@teamdevs.uz">office@teamdevs.uz</a>
-        </div>
-        
-
-
-      </form>
-    </div>
-
-    <div class="callback-form" id="learnmore" style="display: none">
-      <form method="post" class="ajax_form" action="" id="callbackForm">
-        <div class="popup-form__title">Заказать услугу</div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="name"
-            placeholder="Ваше имя*"
-            class="popup-input"
-            required=""
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            name="phone"
-            placeholder="Ваш номер телефона*"
-            class="popup-input phone"
-            required=""
-          />
-        </div>
-        <div class="form-group">
-          <textarea
-            name="comment"
-            class="popup-textarea"
-            placeholder="Коментарий"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn popup-btn">Отправить</button>
-        </div>
-        <div class="popup-note">
-          либо напишите на
-          <a href="mailto:office@teamdevs.uz">office@teamdevs.uz</a>
-        </div>
-      
-
- 
-      </form>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#callbackForm').submit(function(event) {
+              event.preventDefault(); // Prevent default form submission
+    
+              // Retrieve values from input fields
+              var u_name = $('input[name="name"]').val();
+              var phone = $('input[name="phone"]').val();
+              var message = $('textarea[name="comment"]').val();
+    
+              // Construct message to send to Telegram
+              var messageText = "Имя: " + u_name + "\nТелефон: " + phone + "\nКомментарий: " + message;
+    
+              var telegram_bot_id = "7031497239:AAF0EinTIcdyQf-czB-LyqmnnzbZxuFQqqA";
+              var chat_id = 5676930441;
+    
+              var settings = {
+                  "async": true,
+                  "crossDomain": true,
+                  "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+                  "method": "POST",
+                  "headers": {
+                      "Content-Type": "application/json",
+                      "cache-control": "no-cache"
+                  },
+                  "data": JSON.stringify({
+                      "chat_id": chat_id,
+                      "text": messageText
+                  })
+              };
+    
+              $.ajax(settings).done(function(response) {
+                  console.log(response);
+                  // Optionally, you can show a success message or perform other actions after successful submission
+              });
+    
+              // Clear form fields after submission
+              $('input[name="name"]').val('');
+              $('input[name="phone"]').val('');
+              $('textarea[name="comment"]').val('');
+          });
+      });
+    </script>
+    
+    
+  
 
 
 
