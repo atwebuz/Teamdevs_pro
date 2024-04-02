@@ -468,18 +468,8 @@
           <div class="col-ms-12">
             <div class="sectionTitle" id="about"><h3 class="h3_title">О Нас</h3></div>
           </div>
-          <div class="col-md-4">
-            <div class="mainAboutTitle">
-              <div class="title_ab">ТОП-10</div>
-              <div class="abListElem">
-                В рейтинге разработчиков интернет-магазинов автозапчастей
-              </div>
-              <div class="abListElem">
-                В рейтинге разработчиков интернет-магазинов на 1С-Битрикс
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
+         
+          <div class="col-md-12">
             <div class="advantRightCol">
               <div class="mainAbouttext">
                 <p>
@@ -489,32 +479,25 @@
 
                   <br />Мы ценим ваше время, силы и деньги!<br />
                 </p>
-                <a href="about.html" class="link_about"
-                  >О компании
-                  <div class="pr_link"></div
-                ></a>
+               
               </div>
               <div class="mainaboutAdvant">
                 <div class="elemAdavant">
                   <div class="adIcon">
                     <img src="assets/templates/img/icon_garant.svg" alt="" />
-                    10 лет
+                    1 лет
                   </div>
                   <p>Гарантии на разработанный нами сайт</p>
                 </div>
                 <div class="elemAdavant">
                   <div class="adIcon">
                     <img src="assets/templates/img/icon_rocket.svg" alt="" />
-                    13 лет
+                    3 лет
                   </div>
                   <p>Запускаем успешные проекты</p>
                 </div>
-                <div class="elemAdavant">
-                  <div class="adIcon">
-                    <img src="assets/templates/img/icon_gold.svg" alt="" />
-                  </div>
-                  <p><b>Золотой партнер</b> 1С-Битрикс</p>
-                </div>
+                <div class="elemAdavants">
+
               </div>
             </div>
           </div>
@@ -653,9 +636,15 @@
         </div>
         <div class="row">
           <div class="col-md-3">
-            <div class="copyright">© «Электрон» Ижевск, 2010-2023</div>
-           
-          </div>
+          
+          <div class="copyright">© «Узбекистан, Ташкент, 2021-<span id="currentYear"></span></div>
+          <script>
+            let date = new Date().getFullYear();
+            let currentYearElement = document.getElementById("currentYear");
+            
+            currentYearElement.textContent = date;
+          </script>
+</div>
           <div class="col-md-6">
             <div class="cms-buttons">
        
