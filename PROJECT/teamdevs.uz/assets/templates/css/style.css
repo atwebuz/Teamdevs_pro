@@ -567,9 +567,13 @@ header {
 
 .dragable-slider-item {
     width: 100%;
-    max-width: 240px;
+    /* max-width: 240px; */
     margin: 0px 55px;
 }
+.clients_img{
+    height: 120px !important;
+}
+
 
 .sectionTrusted {
     margin-bottom: 60px;
