@@ -674,22 +674,23 @@
       <form method="post" class="ajax_form" action="" id="callbackForm">
         <div class="popup-form__title">Обратный звонок</div>
         <div class="form-group">
-			<style>
-				.popup-input,.popup-textarea{
-					width: 100%;
-					padding: 10px;
-					margin: 5px 0;
-				}
-				.popup-btn{
-					background: #2c257c;
-					color: aliceblue;
-				}
-			</style>
+          <style>
+            .popup-input,.popup-textarea{
+              width: 100%;
+              padding: 10px;
+              margin: 5px 0;
+            }
+            .popup-btn{
+              background: #2c257c;
+              color: aliceblue;
+            }
+          </style>
           <input
             type="text"
             name="name"
             placeholder="Ваше имя*"
             class="popup-input"
+            id="nameInput" 
             required=""
           />
         </div>
@@ -699,6 +700,7 @@
             name="phone"
             placeholder="Ваш номер телефона*"
             class="popup-input phone"
+            id="phoneInput" 
             required=""
           />
         </div>
@@ -706,66 +708,63 @@
           <textarea
             name="comment"
             class="popup-textarea"
-            placeholder="Коментарий"
+            id="message"
+            placeholder="Комментарий"
           ></textarea>
         </div>
       
         <div class="form-group">
-          <button type="submit" class="btn popup-btn">Отправить 666</button>
+          <button type="submit" class="btn popup-btn">Отправить</button>
         </div>
         <div class="popup-note">
           либо напишите на
           <a href="mailto:office@teamdevs.uz">office@teamdevs.uz</a>
         </div>
-     
-	
       </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function() {
-          $('#callbackForm').submit(function(event) {
-              event.preventDefault(); // Prevent default form submission
-    
-              // Retrieve values from input fields
-              var u_name = $('input[name="name"]').val();
-              var phone = $('input[name="phone"]').val();
-              var message = $('textarea[name="comment"]').val();
-    
-              // Construct message to send to Telegram
-              var messageText = "Имя: " + u_name + "\nТелефон: " + phone + "\nКомментарий: " + message;
-    
-              var telegram_bot_id = "7031497239:AAF0EinTIcdyQf-czB-LyqmnnzbZxuFQqqA";
-              var chat_id = 5676930441;
-    
-              var settings = {
-                  "async": true,
-                  "crossDomain": true,
-                  "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
-                  "method": "POST",
-                  "headers": {
-                      "Content-Type": "application/json",
-                      "cache-control": "no-cache"
-                  },
-                  "data": JSON.stringify({
-                      "chat_id": chat_id,
-                      "text": messageText
-                  })
-              };
-    
-              $.ajax(settings).done(function(response) {
-                  console.log(response);
-                  // Optionally, you can show a success message or perform other actions after successful submission
-              });
-    
-              // Clear form fields after submission
-              $('input[name="name"]').val('');
-              $('input[name="phone"]').val('');
-              $('textarea[name="comment"]').val('');
+ 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $('#callbackForm').submit(function(event) {
+          event.preventDefault(); // Prevent default form submission
+                    
+          var u_name = document.getElementById("nameInput").value; // Changed to nameInput
+          var phone = document.getElementById("phoneInput").value; // Changed to phoneInput
+          var message = document.getElementById("message").value;
+
+          // Construct message to send to Telegram
+          var messageText = "Имя: " + u_name + "\nТелефон: " + phone + "\nКомментарий: " + message;
+
+          var telegram_bot_id = "7031497239:AAF0EinTIcdyQf-czB-LyqmnnzbZxuFQqqA";
+          var chat_id = 5676930441;
+
+          var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+              "method": "POST",
+              "headers": {
+                  "Content-Type": "application/json",
+                  "cache-control": "no-cache"
+              },
+              "data": JSON.stringify({
+                  "chat_id": chat_id,
+                  "text": messageText
+              })
+          };
+
+          $.ajax(settings).done(function(response) {
+              console.log(response);
           });
+
+          document.getElementById("nameInput").value = ""; // Changed to nameInput
+          document.getElementById("phoneInput").value = ""; // Changed to phoneInput
+          document.getElementById("message").value = "";
       });
-    </script>
+  });
+</script>
     
     
   
