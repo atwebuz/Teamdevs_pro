@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <title>Создание сайтов в Узбекистане - Веб-студия "Электрон"</title>
+    <title>Создание сайтов в Узбекистане - Веб-студия "Teamdevs"</title>
     <meta name="keywords" content="" />
     <meta
       name="description"
@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
    
     <link rel="shortcut icon" href="favicon.png" />
@@ -519,12 +521,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <form
-              method="post"
-              action=""
-              class="form contact-form ajax_form mainSendForm"
-              id="contact-form"
-            >
+            <form action="" onsubmit="sendTelegram(event)" class="form contact-form ajax_form mainSendForm" id="contact-form">
               <div class="leftColl">
                 <div class="form-group">
                   <label for="">Имя*</label>
@@ -532,8 +529,8 @@
                     type="text"
                     name="name"
                     placeholder="Введите ваше имя"
+                    id="name"
                     class="form-control"
-                    onchange="grecaptcha.reset();"
                     required=""
                   />
                 </div>
@@ -542,6 +539,7 @@
                   <input
                     type="Email"
                     name="email"
+                    id="email"
                     placeholder="Введите ваш e-mail"
                     class="form-control"
                     required=""
@@ -552,6 +550,7 @@
                   <input
                     type="text"
                     name="phone"
+                    id="phone"
                     placeholder="+7(999) 999-99-99"
                     class="form-control phone"
                   />
@@ -564,24 +563,22 @@
                   <textarea
                     type="text"
                     name="comment"
+                    id="message"
                     placeholder="Текст сообщения"
                     class="form-control"
                   ></textarea>
                 </div>
             
                 <div class="form-group">
-                  <button type="submit" class="btn btn-transparent btn-form">
+                  <!-- <button type="submit" class="btn btn-transparent btn-form">
                     Отправить
-                  </button>
+                  </button> -->
+                  <input type="submit" value="Yuborish" id="btn">
                 </div>
               
               </div>
 
-              <input
-                type="hidden"
-                name="af_action"
-                value="84556d645171d6af47458fe1514b8bc5"
-              />
+             
             </form>
           </div>
         </div>
@@ -816,6 +813,6 @@
 
 
 
-
+<script src="./telegram.js"></script>
   </body>
 </html>
