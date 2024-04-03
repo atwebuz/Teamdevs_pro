@@ -383,7 +383,7 @@
                     >
                   </div> </a
                 ><a
-                  href="https://prettyshop.uz"
+                  href="https://t.me/prettyshopuz_bot"
                   target="_blank"
                   class="projectElem white"
                   style="background: #2c257c"
@@ -548,7 +548,7 @@
                 <div class="form-group">
                   <label for="">Телефон*</label>
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
                     id="phone"
                     placeholder="+7(999) 999-99-99"
@@ -626,7 +626,7 @@
           
 			<div class="flex-block">
 				<a
-				  href="#feedback"
+				  href="#callback"
 				  class="btn btn-transparent footer-btn feedback"
 				  >Связаться</a
 				>
@@ -693,10 +693,18 @@
             id="nameInput" 
             required=""
           />
+
+          <input
+          type="hidden"
+          name="modalInput"
+          id="modalInput" 
+          value="From Feedback"
+          required=""
+        />
         </div>
         <div class="form-group">
           <input
-            type="text"
+            type="number"
             name="phone"
             placeholder="Ваш номер телефона*"
             class="popup-input phone"
@@ -706,9 +714,9 @@
         </div>
         <div class="form-group">
           <textarea
-            name="comment"
+            name="message"
             class="popup-textarea"
-            id="message"
+            id="messageInput"
             placeholder="Комментарий"
           ></textarea>
         </div>
@@ -722,52 +730,52 @@
         </div>
       </form>
     </div>
-
- 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function() {
-      $('#callbackForm').submit(function(event) {
-          event.preventDefault(); // Prevent default form submission
-                    
-          var u_name = document.getElementById("nameInput").value; // Changed to nameInput
-          var phone = document.getElementById("phoneInput").value; // Changed to phoneInput
-          var message = document.getElementById("message").value;
-
-          // Construct message to send to Telegram
-          var messageText = "Имя: " + u_name + "\nТелефон: " + phone + "\nКомментарий: " + message;
-
-          var telegram_bot_id = "7031497239:AAF0EinTIcdyQf-czB-LyqmnnzbZxuFQqqA";
-          var chat_id = 5676930441;
-
-          var settings = {
-              "async": true,
-              "crossDomain": true,
-              "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
-              "method": "POST",
-              "headers": {
-                  "Content-Type": "application/json",
-                  "cache-control": "no-cache"
-              },
-              "data": JSON.stringify({
-                  "chat_id": chat_id,
-                  "text": messageText
-              })
-          };
-
-          $.ajax(settings).done(function(response) {
-              console.log(response);
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#callbackForm').submit(function(event) {
+              event.preventDefault(); 
+                        
+              var u_name = document.getElementById("nameInput").value; 
+              var phone = document.getElementById("phoneInput").value;
+              var message = document.getElementById("messageInput").value;
+              var modalInput = document.getElementById("modalInput").value;
+    
+              
+    
+              // Construct message to send to Telegram
+              var messageText = "✅Заголовок: " + modalInput + "\n\n👤Имя: " + u_name + "\n\n☎️Телефон: " + phone + "\n\n💬Комментарий: " + message ;
+    
+              var telegram_bot_id = "7031497239:AAF0EinTIcdyQf-czB-LyqmnnzbZxuFQqqA";
+              var chat_id = 5676930441;
+    
+              var settings = {
+                  "async": true,
+                  "crossDomain": true,
+                  "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+                  "method": "POST",
+                  "headers": {
+                      "Content-Type": "application/json",
+                      "cache-control": "no-cache"
+                  },
+                  "data": JSON.stringify({
+                      "chat_id": chat_id,
+                      "text": messageText
+                  })
+              };
+    
+              $.ajax(settings).done(function(response) {
+                  console.log(response);
+              });
+    
+              document.getElementById("nameInput").value = ""; // Changed to nameInput
+              document.getElementById("phoneInput").value = ""; // Changed to phoneInput
+              document.getElementById("messageInput").value = "";
+              document.getElementById("modal").value = "";
           });
-
-          document.getElementById("nameInput").value = ""; // Changed to nameInput
-          document.getElementById("phoneInput").value = ""; // Changed to phoneInput
-          document.getElementById("message").value = "";
       });
-  });
-</script>
+    </script>
     
-    
-  
+
 
 
 
