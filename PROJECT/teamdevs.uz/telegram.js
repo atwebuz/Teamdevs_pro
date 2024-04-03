@@ -9,7 +9,7 @@ function sendTelegram(event) {
     var phone = document.getElementById("phone").value;
     var message = document.getElementById("message").value;
 
-    message =  "👤Имя: " + u_name + "\n\n☎️Телефон: " + phone +"📧email: " + email  + "\n\n💬Комментарий: " + message ;
+    message =  "👤Имя: " + u_name + "\n\n☎️Телефон: " + phone +"\n\n📧email: " + email  + "\n\n💬Комментарий: " + message ;
 
     var settings = {
         "async": true,
