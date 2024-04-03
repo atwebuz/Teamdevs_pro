@@ -28,10 +28,8 @@ function sendTelegram(event) {
 
     $.ajax(settings).done(function(response) {
         console.log(response);
-        // Optionally, you can show a success message or perform other actions after successful submission
     });
 
-    // Clear form fields after submission
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("phone").value = "";
