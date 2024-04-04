@@ -375,7 +375,7 @@
         opacity: 1 !important;
     }
     .dragable-slider-item {
-        margin: 0px 20px;
+        margin: 0px 0px !important;
     }
     .banner-text {
         max-width: 80%;
@@ -496,9 +496,7 @@
     .main-slider__item {
         padding: 20px 0 30px 70px;
     }
-    .dragable-slider-item {
-        max-width: 200px;
-    }
+
 }
 
 @media (max-width: 580px) {
@@ -650,6 +648,9 @@
 	.mobilElemComp .pr_info p {
 		min-height:0px;
 	}
+    .clients_img {
+        height: 110px !important;
+    }
 }
 
 @media (max-width: 395px) {
